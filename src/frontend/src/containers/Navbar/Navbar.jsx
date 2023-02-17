@@ -3,29 +3,43 @@ import {GiHamburgerMenu} from "react-icons/gi";
 import "./Navbar.scss";
 
 const Navbar = () => {
-  const [isNavOpen, setIsNavOpen] = useState(false);
-
-  const showNav = () => {
-    setIsNavOpen(!isNavOpen);
-  };
+  const [isNavExpanded, setIsNavExpanded] = useState(false)
 
   return (
-    <>
-    <div className="menu-button" onClick={showNav}>
-        <GiHamburgerMenu/>
-    </div>
-    <nav className={`navbar ${isNavOpen && 'active'}`}>
-        <ul>
-        <li> <a href="#">HOME</a> </li>
-        <li> <a href="#">ABOUT US</a> </li>
-        <li> <a href="#">OBJECTIVES</a> </li>
-        <li> <a href="#">STORIES</a> </li>
-        <li> <a href="#">GALLERY</a> </li>
-        <li> <button>JOIN NOW</button> </li>
+    <nav className="navigation">
+    <button
+      className="hamburger"
+      onClick={() => {
+        setIsNavExpanded(!isNavExpanded)
+      }}
+    >
+      <GiHamburgerMenu />
+    </button>
+    <div
+      className={
+        isNavExpanded ? "navigation-menu expanded" : "navigation-menu"
+      }>
+      <ul>
+        <li>
+          <a href="/">HOME</a>
+        </li>
+        <li>
+          <a href="/">ABOUT US</a>
+        </li>
+        <li>
+          <a href="/">OBJECTIVES</a>
+        </li>
+        <li>
+          <a href="/">STORIES</a>
+        </li>
+        <li>
+          <a href="/">GALLERIES</a>
+        </li>
+      <li><button className="btn btn-primary">Join Now</button></li>
       </ul>
-    </nav>
-    <GiHamburgerMenu />
-    </>
+
+    </div>
+  </nav>
   );
 };
 
